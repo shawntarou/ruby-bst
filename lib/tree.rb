@@ -17,12 +17,18 @@ class Tree
 
     mid = start + (finish - start) / 2
 
-    root = Node(array[mid])
+    root = Node.new(array[mid])
 
     root.left = sorted_array_to_bst_recursion(array, start, mid - 1)
     root.right = sorted_array_to_bst_recursion(array, mid + 1, finish)
 
     root
+  end
+
+  def pretty_print(node = @root, prefix = '', is_left = true)
+    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+    puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end
 
   class Node
