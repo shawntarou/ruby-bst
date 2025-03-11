@@ -7,4 +7,4 @@ BST = Tree.new(array)
 BST.insert(6)
 BST.pretty_print
 
-p BST.height
+p BST.depth
