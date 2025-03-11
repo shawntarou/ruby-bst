@@ -1,14 +1,44 @@
 require_relative 'lib/tree.rb'
 
-# array = [1, 7, 4]
-array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
-BST = Tree.new(array)
+=begin
+                                                                                                                                    ,----, 
+                                                                                                                 ,-.----.         ,/   .`| 
+    ,---,    ,-.----.     ,---,                ,---,.,-.----.             .--.--.     ,----..  ,-.----.     ,---,\    /  \      ,`   .'  : 
+  .'  .' `\  \    /  \ ,`--.' |       ,---.  ,'  .' |\    /  \           /  /    '.  /   /   \ \    /  \ ,`--.' ||   :    \   ;    ;     / 
+,---.'     \ ;   :    \|   :  :      /__./|,---.'   |;   :    \         |  :  /`. / |   :     :;   :    \|   :  :|   |  .\ :.'___,/    ,'  
+|   |  .`\  ||   | .\ ::   |  ' ,---.;  ; ||   |   .'|   | .\ :         ;  |  |--`  .   |  ;. /|   | .\ ::   |  '.   :  |: ||    :     |   
+:   : |  '  |.   : |: ||   :  |/___/ \  | |:   :  |-,.   : |: |         |  :  ;_    .   ; /--` .   : |: ||   :  ||   |   \ :;    |.';  ;   
+|   ' '  ;  :|   |  \ :'   '  ;\   ;  \ ' |:   |  ;/||   |  \ :          \  \    `. ;   | ;    |   |  \ :'   '  ;|   : .   /`----'  |  |   
+'   | ;  .  ||   : .  /|   |  | \   \  \: ||   :   .'|   : .  /           `----.   \|   : |    |   : .  /|   |  |;   | |`-'     '   :  ;   
+|   | :  |  ';   | |  \'   :  ;  ;   \  ' .|   |  |-,;   | |  \           __ \  \  |.   | '___ ;   | |  \'   :  ;|   | ;        |   |  '   
+'   : | /  ; |   | ;\  \   |  '   \   \   ''   :  ;/||   | ;\  \         /  /`--'  /'   ; : .'||   | ;\  \   |  ':   ' |        '   :  |   
+|   | '` ,/  :   ' | \.'   :  |    \   `  ;|   |    \:   ' | \.'        '--'.     / '   | '/  ::   ' | \.'   :  |:   : :        ;   |.'    
+;   :  .'    :   : :-' ;   |.'      :   \ ||   :   .':   : :-'            `--'---'  |   :    / :   : :-' ;   |.' |   | :        '---'      
+|   ,.'      |   |.'   '---'         '---" |   | ,'  |   |.'                         \   \ .'  |   |.'   '---'   `---'.|                   
+'---'        `---'                         `----'    `---'                            `---`    `---'               `---`                   
+                                                                                                                                           
+=end
 
-BST.insert(6)
-BST.insert(323)
-BST.insert(322)
-BST.insert(320)
-BST.pretty_print
+array = (Array.new(15) { rand(1..100) })
+tree = Tree.new(array)
+tree.pretty_print
+p tree.balanced?
+p tree.level_order
+p tree.preorder
+p tree.inorder
+p tree.postorder
 
-BST.rebalance
-BST.pretty_print
+tree.insert(101)
+tree.insert(102)
+tree.insert(103)
+tree.insert(104)
+tree.pretty_print
+p tree.balanced?
+
+tree.rebalance
+tree.pretty_print
+p tree.balanced?
+p tree.level_order
+p tree.preorder
+p tree.inorder
+p tree.postorder
