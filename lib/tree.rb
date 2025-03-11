@@ -21,6 +21,28 @@ class Tree
     find_recursion(@root, value)
   end
 
+  def level_order 
+    return @root if @root.nil?
+
+    queue = Array.new
+    queue.push(@root)
+    values_array = Array.new
+
+    until queue.empty?
+      curr_node = queue.first
+
+      if block_given? then yield(curr_node.data)
+      else values_array << curr_node.data end
+
+      if curr_node.left != nil then queue.push(curr_node.left) end
+      if curr_node.right != nil then queue.push(curr_node.right) end
+        
+      queue.shift()
+    end
+
+    return values_array.empty? ? nil : values_array 
+  end
+
   private 
 
   def build_tree(array)
@@ -90,10 +112,6 @@ class Tree
     root
   end
 
-  def level_order 
-
-  end
-
   def inorder
 
   end
@@ -128,6 +146,7 @@ class Tree
     attr_accessor :data, :left, :right
 
     def <=>(other)
+      return if other.nil?
       data <=> other.data
     end
 
