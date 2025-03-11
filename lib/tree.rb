@@ -112,6 +112,27 @@ class Tree
    depth 
   end
 
+  def balanced?
+    balanced_recursion(@root) > 0
+  end
+  
+  def balanced_recursion(root)
+    return 0 if root.nil?
+    
+    left_height = balanced_recursion(root.left)
+    right_height = balanced_recursion(root.right)
+    
+    if left_height == -1 || right_height == -1 || (left_height - right_height).abs > 1
+      return -1
+    end
+
+    [left_height, right_height].max + 1
+  end
+
+  def rebalance
+
+  end
+
   private 
 
   def build_tree(array)
@@ -179,14 +200,6 @@ class Tree
     if value > root.data then return find_recursion(root.right, value) end
 
     root
-  end
-
-  def balanced?
-
-  end
-
-  def rebalance
-
   end
 
   class Node
