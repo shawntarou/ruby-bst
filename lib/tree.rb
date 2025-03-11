@@ -43,6 +43,54 @@ class Tree
     return values_array.empty? ? nil : values_array 
   end
 
+  def inorder(root = @root, &block)
+    return root if root.nil?
+
+    if block_given?
+      inorder(root.left, &block)
+      yield(root.data)
+      inorder(root.right, &block)
+    else
+      left_values = inorder(root.left) 
+      root.data 
+      right_values = inorder(root.right) 
+
+      [left_values, root.data, right_values].compact.flatten
+    end
+  end
+
+  def preorder(root = @root, &block)
+    return root if root.nil?
+
+    if block_given?
+      yield(root.data)
+      preorder(root.left, &block)
+      preorder(root.right, &block)
+    else
+      root.data 
+      left_values = preorder(root.left) 
+      right_values = preorder(root.right) 
+
+      [root.data, left_values, right_values].compact.flatten
+    end
+  end
+
+  def postorder(root = @root, &block)
+    return root if root.nil?
+
+    if block_given?
+      postorder(root.left, &block)
+      postorder(root.right, &block)
+      yield(root.data)
+    else
+      left_values = postorder(root.left) 
+      right_values = postorder(root.right) 
+      root.data 
+
+      [left_values, right_values, root.data].compact.flatten
+    end
+  end
+
   private 
 
   def build_tree(array)
@@ -112,18 +160,7 @@ class Tree
     root
   end
 
-  def inorder
-
-  end
-
-  def preorder
-
-  end
-
-  def postorder
-    
-  end
-
+  
   def height(node)
     
   end
