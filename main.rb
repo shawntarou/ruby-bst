@@ -4,6 +4,11 @@ require_relative 'lib/tree.rb'
 array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 BST = Tree.new(array)
 
+BST.insert(6)
+BST.insert(323)
+BST.insert(322)
+BST.insert(320)
 BST.pretty_print
 
-p BST.balanced?
+BST.rebalance
+BST.pretty_print
