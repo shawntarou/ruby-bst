@@ -6,7 +6,5 @@ BST = Tree.new(array)
 
 BST.insert(6)
 BST.pretty_print
-BST.delete(8)
-BST.pretty_print
-BST.delete(9)
-BST.pretty_print
+
+p BST.find(2)

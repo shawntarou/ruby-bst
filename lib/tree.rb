@@ -17,6 +17,10 @@ class Tree
     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end
 
+  def find(value)
+    find_recursion(@root, value)
+  end
+
   private 
 
   def build_tree(array)
@@ -77,8 +81,13 @@ class Tree
     curr
   end
 
-  def find(value)
+  def find_recursion(root, value)
+    return root if root.nil?
+    
+    if value < root.data then return find_recursion(root.left, value) end
+    if value > root.data then return find_recursion(root.right, value) end
 
+    root
   end
 
   def level_order 
