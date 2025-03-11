@@ -7,6 +7,4 @@ BST = Tree.new(array)
 BST.insert(6)
 BST.pretty_print
 
-p BST.preorder {|value| print "#{value + 1}, "}
-p BST.inorder {|value| print "#{value + 1}, "}
-p BST.postorder {|value| print "#{value + 1}, "}
+p BST.height

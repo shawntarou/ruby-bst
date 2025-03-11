@@ -91,6 +91,12 @@ class Tree
     end
   end
 
+  def height(node = @root)
+    return -1 if node.nil?
+    
+    [height(node.left), height(node.right)].max + 1
+  end
+
   private 
 
   def build_tree(array)
@@ -158,11 +164,6 @@ class Tree
     if value > root.data then return find_recursion(root.right, value) end
 
     root
-  end
-
-  
-  def height(node)
-    
   end
 
   def depth(node)
